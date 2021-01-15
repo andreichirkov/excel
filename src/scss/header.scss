@@ -1,0 +1,46 @@
+@import "variables";
+@import "mixins";
+
+.excel__header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: $header-height;
+  //верх лево&право низ
+  padding: 8px 4px 0;
+  display: flex;
+  justify-content: space-between;
+
+  //temp
+  //background: antiquewhite;
+
+  .input {
+    margin: 0;
+    padding: 2px 7px;
+    min-width: 1px;
+    color: #000;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 20px;
+    font-size: 18px;
+    line-height: 20px;
+    outline: none;
+    //font-weight: 300;//???
+
+    //ховер раньше фокуса, чтобы фокус имел больший приоритет
+    &:hover {
+      border: 1px solid $border-color;
+    }
+
+    &:focus {
+      border: 2px solid #1a72e8;
+    }
+  }
+
+  .button {
+    //mixin подключается с помощью include и можно передать цвет
+    //при нажатии active получит цвет red (который принимает button)
+    @include button(red)
+  }
+}
