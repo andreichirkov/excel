@@ -23,14 +23,15 @@ const jsLoaders = () => {
     {
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
+        plugins: ['@babel/plugin-proposal-class-properties']
       }
     }
   ]
 
-  if (isDev) {
-    loaders.push('eslint-loader')
-  }
+  // if (isDev) {
+  //   loaders.push('eslint-loader')
+  // }
   return loaders
 }
 
@@ -107,12 +108,7 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /node_modules/,
         //тут все для бейбла, пресет энв самый хороший
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+        use: jsLoaders()
       }
     ],
   },

@@ -12,7 +12,11 @@
     "require-jsdoc": "off",
     "spaced-comment": "off",
     "max-len": "off",
-    "eol-last": 0
+    "eol-last": 0,
+    "no-trailing-spaces": "off",
+    "padded-blocks": "off",
+    "operator-linebreak": "off",
+    "no-multi-spaces": "off"
   },
   // установил пакет eslint-config-google
   "extends": ["eslint:recommended", "google"]
