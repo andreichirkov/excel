@@ -14,5 +14,7 @@ export class Table extends ExcelComponent {
     return createTable(20)
   }
 
-
+  onMousedown(event) {
+    console.log(event.target.dataset)
+  }
 }
