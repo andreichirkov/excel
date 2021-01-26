@@ -4,6 +4,7 @@ import {DomListener} from '@core/DomListener';
 export class ExcelComponent extends DomListener {
   constructor($root, options = {}) {
     //передаем в DomListener
+    //super передает параметры, которые нужны для класса родителя
     super($root, options.listeners)
     this.name = options.name || ''
   }
