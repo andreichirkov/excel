@@ -59,7 +59,11 @@ class Dom {
   }
 
   css(styles = {}) {
-
+    // Object.keys(styles)
+    Object.keys(styles).forEach(key => {
+      //контекст сохранен старый
+      this.$el.style[key] = styles[key]
+    })
   }
 }
 
