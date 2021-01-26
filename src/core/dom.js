@@ -1,9 +1,8 @@
 class Dom {
   constructor(selector) {
-    this.$el = typeof selector === 'string'
-      //строка или нода
-      ? document.querySelector(selector)
-      : selector
+    this.$el = typeof selector === 'string'//проверим
+      ? document.querySelector(selector) //строка?
+      : selector                        //или нода?
   }
 
   html(html) {
@@ -40,6 +39,15 @@ class Dom {
       this.$el.appendChild(node)
     }
     return this
+  }
+
+  closest(selector) {
+    //вызываем у нативного элемента closest, $(this.$el чтобы потом везде не писать $el
+    return $(this.$el.closest(selector))
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect()
   }
 }
 
