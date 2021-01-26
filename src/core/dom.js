@@ -41,6 +41,10 @@ class Dom {
     return this
   }
 
+  get data() {
+    return this.$el.dataset
+  }
+
   closest(selector) {
     //вызываем у нативного элемента closest, $(this.$el чтобы потом везде не писать $el
     return $(this.$el.closest(selector))
@@ -48,6 +52,14 @@ class Dom {
 
   getCoords() {
     return this.$el.getBoundingClientRect()
+  }
+
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector)
+  }
+
+  css(styles = {}) {
+
   }
 }
 
