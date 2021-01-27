@@ -70,6 +70,19 @@ class Dom {
     })
   }
 
+  id(parse) {
+    //передали parse => получили в виде объекта
+    if (parse) {
+      const parsed = this.id().split(':') //через рекурсию (тут if не пройдет и будет след строка)
+      return {
+        row: +parsed[0],
+        col: +parsed[1]
+      }
+    }
+    //не передали parse => получим id как указали в table template через :
+    return this.data.id
+  }
+
   addClass(className) {
     this.$el.classList.add(className)
   }
