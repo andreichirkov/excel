@@ -3,10 +3,19 @@ const CODES = {
   Z: 90
 }
 
-function toCell(_, col) {
-  return `
-    <div class="cell" contenteditable data-col="${col}"></div>
-  `
+// function toCell(row, col) {
+//
+// }
+function toCell(row) {
+  return function(_, col) {
+    return `
+      <div class="cell"
+        contenteditable
+        data-col="${col}"
+        data-id="${row}:${col}"
+      ></div>
+     `
+  }
 }
 
 //index есть потомучто передает метод .map
@@ -55,12 +64,13 @@ export function createTable(rowsCount = 15) {
   //если первая строчка, то в row-data нужно поместить columns
   //если вторая и дальше, то cell
 
-  for (let i = 0; i < rowsCount; i++) {
+  for (let row = 0; row < rowsCount; row++) {
     const cells = new Array(colsCount)
         .fill('')
-        .map(toCell) //элемент и индекс будем принимать
+        // .map((_, col) => toCell(row, col)) //элемент и индекс будем принимать
+        .map(toCell(row))
         .join('')
-    rows.push(createRow(i + 1, cells))
+    rows.push(createRow(row + 1, cells))
   }
 
   return rows.join('')

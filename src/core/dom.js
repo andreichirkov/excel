@@ -27,6 +27,10 @@ class Dom {
     this.$el.removeEventListener(eventType, callback)
   }
 
+  find(selector) {
+    return $(this.$el.querySelector(selector))
+  }
+
   myAppend(node) {
     if (node instanceof Dom) {
       //проверка только для Dom-инстанса
@@ -64,6 +68,14 @@ class Dom {
       //контекст сохранен старый
       this.$el.style[key] = styles[key]
     })
+  }
+
+  addClass(className) {
+    this.$el.classList.add(className)
+  }
+
+  removeClass(className) {
+    this.$el.classList.remove(className)
   }
 }
 

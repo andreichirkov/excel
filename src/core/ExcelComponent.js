@@ -7,13 +7,16 @@ export class ExcelComponent extends DomListener {
     //super передает параметры, которые нужны для класса родителя
     super($root, options.listeners)
     this.name = options.name || ''
+
+    this.prepare() //вспомогательный хук
   }
+
+  prepare() {}
 
   //возвращает шаблон компонента
   toHTML() {
     return ''
   }
-
   //сюда помещается все то, что будет иниализированно для компонента
   init() {
     this.initDOMListeners()
