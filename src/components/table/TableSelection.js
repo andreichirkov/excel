@@ -11,7 +11,7 @@ export class TableSelection {
   //$el instanceof DOM === true (class) - чтобы работали методы принадлежащие DOM
   select($el) {
     this.clear()
-    $el.addClass(TableSelection.className)
+    $el.focus().addClass(TableSelection.className)
     this.group.push($el)
     this.current = $el    //для выделения первой ячейки, понадобится в группе ячеек
   }

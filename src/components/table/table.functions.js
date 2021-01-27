@@ -22,3 +22,27 @@ export function matrix($target, $current) {
     return acc  //чтобы был виден на следующей итерации
   }, [])
 }
+
+//деструктуризацией вытаскиваем из id {col и row}
+export function nextSelector(key, {col, row}) {
+  const MIN_VALUE = 0
+  //получаем [data-id="${с нужным id}"]
+  switch (key) {
+    case 'Enter':
+    case 'ArrowDown':
+      row++
+      break
+    case 'Tab':
+    case 'ArrowRight':
+      col++
+      break
+    case 'ArrowLeft':
+      col = col - 1 < MIN_VALUE ? MIN_VALUE : col - 1
+      break
+    case 'ArrowUp':
+      row = row - 1 < MIN_VALUE ? MIN_VALUE : row - 1
+      break
+  }
+
+  return `[data-id="${row}:${col}"]`
+}
