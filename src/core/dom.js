@@ -13,6 +13,18 @@ class Dom {
     return this.$el.outerHTML.trim()
   }
 
+  text(text) {
+    //геттер и сеттер
+    if (typeof text === 'string') {
+      this.$el.textContent = text
+      return this
+    }
+    if (this.$el.tagName.toLowerCase() === 'input') {
+      return this.$el.value.trim()
+    }
+    return this.$el.textContent.trim()
+  }
+
   clear() {
     this.html('')
     return this
@@ -25,6 +37,10 @@ class Dom {
 
   off(eventType, callback) {
     this.$el.removeEventListener(eventType, callback)
+  }
+
+  find(selector) {
+    return $(this.$el.querySelector(selector))
   }
 
   myAppend(node) {
@@ -64,6 +80,34 @@ class Dom {
       //контекст сохранен старый
       this.$el.style[key] = styles[key]
     })
+  }
+
+  id(parse) {
+    //передали parse => получили в виде объекта
+    if (parse) {
+      const parsed = this.id().split(':') //через рекурсию (тут if не пройдет и будет след строка)
+      return {
+        row: +parsed[0],
+        col: +parsed[1]
+      }
+    }
+    //не передали parse => получим id как указали в table template через :
+    return this.data.id
+  }
+
+  focus() {
+    this.$el.focus()
+    return this
+  }
+
+  addClass(className) {
+    this.$el.classList.add(className)
+    return this
+  }
+
+  removeClass(className) {
+    this.$el.classList.remove(className)
+    return this
   }
 }
 
